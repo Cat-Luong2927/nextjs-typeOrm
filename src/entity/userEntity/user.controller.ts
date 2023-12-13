@@ -17,9 +17,4 @@ export class UserController {
         return this.userService.findOne(id)
     }
 
-    // @Post('create')
-    // async createUser(@Body() user: UserDto): Promise<UserEntity> {
-    //     const newUser = await this.userService.create(user)
-    //     return newUser;
-    // }
 }

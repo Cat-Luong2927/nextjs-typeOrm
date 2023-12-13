@@ -7,11 +7,6 @@ import { ConfigModule } from '@nestjs/config';
 import { RoleModule } from './entity/roleEntity/role.module';
 import { Role } from './entity/roleEntity/role.entity';
 import { AuthModule } from './auth/auth.module';
-import { AuthController } from './auth/auth.controller';
-import { UserController } from './entity/userEntity/user.controller';
-import { NoteController } from './note/note.controller';
-import { AuthService } from './auth/auth.service';
-import { UsersService } from './entity/userEntity/user.service';
 
 @Module({
   imports: [
