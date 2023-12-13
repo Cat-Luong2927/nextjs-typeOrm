@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IsNotEmpty } from "class-validator";
-import { BaseDto } from "../common/base.dto";
-import { Expose, Transform } from "class-transformer";
+import { Expose} from "class-transformer";
 
-export class UserDto extends BaseDto {
+export class UserDto {
   @IsNotEmpty()
   //Expose giúp hiện field 
   @Expose()
@@ -14,12 +13,12 @@ export class UserDto extends BaseDto {
   firstName: string;
   // @Expose()
   lastName: string;
-
-  @Expose()
-  @Transform(({obj})=> obj.firstName + " " + obj.lastName)
-  fullName: string;
   
   @IsNotEmpty()
   @Expose()
   password: string;
+
+  @IsNotEmpty()
+  @Expose()
+  email: string;
 }

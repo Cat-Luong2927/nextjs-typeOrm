@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8.2
+    container_name: dev-database-sql
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: Abcd123456789
+      MYSQL_DATABASE: demo
+    volumes:
+      - type: bind
+        source: ./database/mysql 
+        target: /var/lib/mysql
+#Create containers, networks,...from "docker compose" file:
+#-d: deamon/background mode
+#docker compose up -d
+#docker compose up -d dev-database -d
