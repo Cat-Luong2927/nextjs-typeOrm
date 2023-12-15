@@ -9,8 +9,8 @@ export class Role {
 
   @Column()
   name: string;
-  // eslint-disable-next-line
-  @ManyToOne(type  => UserEntity, user => user.roles)
+
+  @ManyToOne(() => UserEntity, user => user.roles)
   user: UserEntity;
 
 }

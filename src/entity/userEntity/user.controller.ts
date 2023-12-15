@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { UserDto } from '../../modeldto/userDto/user.dto';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { UsersService } from './user.service';
-import { UserEntity } from './user.entity';
+import { AuthGuard } from '../../auth/auth.guard';
+import { Roles } from '../../auth/role/roles.decorator';
+import { Role } from '../../auth/role/role.enum';
+import { RolesGuard } from '../../auth/role/roles.guard';
 
 @Controller('users')
 export class UserController {
@@ -12,7 +14,10 @@ export class UserController {
     getAllUsers() {
         return this.userService.findAll();
     }
+
     @Get(':id')
+    @Roles(Role.Admin)
+    @UseGuards(AuthGuard, RolesGuard)
     getUserById(@Param('id') id: number) {
         return this.userService.findOne(id)
     }

@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { BaseEntity } from '../../common/base.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Exclude} from 'class-transformer';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
 import { Role } from '../roleEntity/role.entity';
 
 @Entity()
@@ -29,6 +28,6 @@ export class UserEntity extends BaseEntity {
     @IsEmail()
     email: string;
 
-    @OneToMany(type => Role, roles => roles.id)
+    @OneToMany(type => Role, role => role.user, {cascade: true})
     roles: Role[];
 }
