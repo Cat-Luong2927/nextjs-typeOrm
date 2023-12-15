@@ -11,6 +11,8 @@ import { RolesGuard } from '../../auth/role/roles.guard';
 export class UserController {
     constructor(private userService: UsersService){}
     @Get()
+    @Roles(Role.Admin)
+    @UseGuards(AuthGuard, RolesGuard)
     getAllUsers() {
         return this.userService.findAll();
     }
